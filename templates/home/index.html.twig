@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+<div class="example-wrapper">
+    <h1> Articles</h1>
+
+    {% for item in news %}
+    <ul>
+        <li>Title: {{item.title}}</li>
+        <li>Date: {{item.DateAdded}}</li>
+        <li> 
+        <img src={{item.image}} alt="Girl in a jacket" width="100" height="100">
+        </li>
+        <li>Comment: {{item.CommentCount}}</li>
+        
+    </ul>
+        {% endfor %}
+</div>
+{% endblock %}
